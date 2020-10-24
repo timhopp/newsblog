@@ -2,12 +2,36 @@ import React from "react";
 
 import { Counter } from "./features/counter/Counter";
 import { TrendingPage } from "./features/counter/TrendingPage";
+// import NavB from "./components/navbar";
+import Footer from "./components/footer";
 import "./App.css";
+// import ReactDOM from "react-dom";
+// import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import thunkMiddleware from "redux-thunk";
+import { applyMiddleware, createStore, compose } from "redux";
+import rootReducer from "./features/counter/index";
 
-function App() {
+const middlewareEnhancer = applyMiddleware(thunkMiddleware);
+const composedEnhancers = compose(middlewareEnhancer);
+
+const AppWrapper = () => {
+  const store = createStore(rootReducer, undefined, composedEnhancers);
+
+  return (
+    <Provider store={store}>
+      {/* // Set context */}
+      <App />
+      {/* // Now App has access to context */}
+    </Provider>
+  );
+};
+
+const App = () => {
   return (
     <div className="App">
       <header className="App-header">
+        {/* <NavB /> */}
         <Counter />
 
         <TrendingPage />
@@ -53,8 +77,15 @@ function App() {
           </a>
         </span>
       </header>
+      <Footer />
     </div>
   );
-}
+};
 
-export default App;
+// ReactDOM.render(
+//   <BrowserRouter>
+//     <App />
+//   </BrowserRouter>,
+//   document.getElementById("root")
+// );
+export default AppWrapper;

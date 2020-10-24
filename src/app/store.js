@@ -1,10 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../features/counter/counterSlice";
-import trendingReducer from "../features/counter/trendingNewsSlice";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { applyMiddleware } from "redux";
+import rootReducer from "../features/counter/index";
+import thunk from "redux-thunk";
 
 export default configureStore({
-  reducer: {
-    counter: counterReducer,
-    trending: trendingReducer,
-  },
+  reducer: rootReducer,
+  // middleware: [applyMiddleware(thunk)],
+  // middleware: [applyMiddleware(thunk), getDefaultMiddleware()],
 });

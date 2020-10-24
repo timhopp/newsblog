@@ -22,15 +22,11 @@ export const TrendingPage = () => {
   if (trendingStatus === "loading") {
     content = <div className="loader">Loading...</div>;
   } else if (trendingStatus === "succeeded") {
-    // Sort posts in reverse chronological order by datetime string
-    // const orderedTrending = trending
-    //   .slice()
-    //   .sort((a, b) => b.date.localeCompare(a.date))
-
     content = trending.map((trending) => (
       // <trendingExcerpt key={trending.id} trending={trending} />
       <ArticleSec key={trending.title} article={trending}></ArticleSec>
     ));
+    // content = "worked";
   } else if (trendingStatus === "failed") {
     content = <div>{error}</div>;
   }

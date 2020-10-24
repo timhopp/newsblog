@@ -1,35 +1,33 @@
 import { Navbar, Nav } from "react-bootstrap";
-import React, { Component } from "react";
+import React from "react";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import Tech from "../Sections/tech";
+import App from "../App";
 
-class NavBarComp extends React.Component {
+class NavB extends React.Component {
   render() {
     return (
       <>
-        {/* <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="/">News-Fi</Navbar.Brand>
+        <Navbar>
+          <Navbar.Brand>News-Fi</Navbar.Brand>
           <Nav className="">
-            <div className="">
-              <Link href="/">
-                <a className="m-4">Home </a>
-              </Link>
-              <Link href="/Sections/trendingUS">
-                <a className="m-4">US Trending News</a>
-              </Link>
-              <Link href="/Sections/trendingWorld">
-                <a className="m-4">World Trending News</a>
-              </Link>
-              <Link href="/Sections/sports">
-                <a className="m-4">Sports</a>
-              </Link>
-              <Link href="/Sections/tech">
-                <a className="m-4">Tech</a>
-              </Link>
-            </div>
+            <Router>
+              <div className="">
+                <Link to="/">Home</Link>
+                {/* <Link to="/Sections/trendingUS">US Trending News</Link>
+                <Link to="/Sections/trendingWorld">World Trending News</Link>
+                <Link to="/Sections/sports">Sports</Link> */}
+                <Link to="/Sections/tech">Tech</Link>
+              </div>
+
+              <Route path="/" component={App} />
+              <Route path="/Sections/tech" component={Tech} />
+            </Router>
           </Nav>
-        </Navbar> */}
+        </Navbar>
       </>
     );
   }
 }
 
-export default NavBarComp;
+export default NavB;
