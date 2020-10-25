@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// omit other imports
-import { selectAllTrending, fetchTrending } from "./trendingNewsSlice";
-import ArticleSec from "../../components/articlesSec";
+import {
+  selectAllTrending,
+  fetchTrending,
+} from "../reducers/trendingNewsSlice";
+import ArticleSec from "./articlesSec";
 
 export const TrendingPage = () => {
   const dispatch = useDispatch();

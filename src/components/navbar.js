@@ -11,6 +11,9 @@ class NavB extends React.Component {
             <div>
               <div className="">
                 <a href="/">Home</a>
+                <a href="/Sections/Trending">US Trending News</a>
+                <a href="/Sections/WorldNews">World News</a>
+                <a href="/Sections/Sports">Sports</a>
                 <a href="/Sections/Tech">Tech</a>
               </div>
             </div>

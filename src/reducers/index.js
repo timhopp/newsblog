@@ -1,10 +1,10 @@
 import trendingNewsSlice from "./trendingNewsSlice";
-import counterSlice from "./counterSlice";
+import worldNewsSlice from "./worldNewsSlice";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
   trending: trendingNewsSlice,
-  counter: counterSlice,
+  world: worldNewsSlice,
 });
 
 export default rootReducer;

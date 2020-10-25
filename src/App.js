@@ -1,13 +1,12 @@
-// import ReactDOM from "react-dom";
-// import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import thunkMiddleware from "redux-thunk";
 import { applyMiddleware, createStore, compose } from "redux";
-import rootReducer from "./features/counter/index";
+import rootReducer from "./reducers/index";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import Tech from "./Sections/tech";
 import NavB from "./components/navbar";
 import Home from "./Sections/home";
+import Trending from "./Sections/trending";
 
 const middlewareEnhancer = applyMiddleware(thunkMiddleware);
 const composedEnhancers = compose(middlewareEnhancer);
@@ -29,7 +28,8 @@ const App = () => {
     <Router>
       <div className="App">
         <NavB />
-        <Route path="/Sections/tech" exact component={Tech} />
+        <Route path="/Sections/Tech" exact component={Tech} />
+        <Route path="/Sections/Trending" exact component={Trending} />
         <Route path="/" exact component={Home} />
       </div>
       ;
