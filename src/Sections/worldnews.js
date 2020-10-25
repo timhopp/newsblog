@@ -1,10 +1,10 @@
 import React from "react";
-import { TrendingPage } from "../components/SectionPage";
+import { WorldNewsPage } from "../components/SectionPage";
 export default function Trending() {
   return (
     <section>
-      <h5>Trending News</h5>
-      <TrendingPage />
+      <h5>World News</h5>
+      <WorldNewsPage />
     </section>
   );
 }

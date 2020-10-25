@@ -13,6 +13,7 @@ export const fetchTrending = createAsyncThunk(
 
 const initialState = {
   trending: [],
+  currentArticle: {},
   status: "idle",
   error: null,
 };
@@ -26,6 +27,18 @@ const trendingSlice = createSlice({
       },
       // prepare(title) {},
     },
+    // currentFind: {
+    //   reducer(state, action) {
+    //     let foundCurrent = state.trending.forEach(
+    //       (trending) => (trending.title = action.title)
+    //     );
+    //     if (foundCurrent != null) {
+    //       state.trending.currentArticle = foundCurrent;
+    //     } else {
+    //       return state;
+    //     }
+    //   },
+    // },
   },
   extraReducers: {
     [fetchTrending.pending]: (state, action) => {

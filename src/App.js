@@ -7,6 +7,7 @@ import Tech from "./Sections/tech";
 import NavB from "./components/navbar";
 import Home from "./Sections/home";
 import Trending from "./Sections/trending";
+import WorldNews from "./Sections/worldnews";
 
 const middlewareEnhancer = applyMiddleware(thunkMiddleware);
 const composedEnhancers = compose(middlewareEnhancer);
@@ -30,6 +31,7 @@ const App = () => {
         <NavB />
         <Route path="/Sections/Tech" exact component={Tech} />
         <Route path="/Sections/Trending" exact component={Trending} />
+        <Route path="/Sections/WorldNews" exact component={WorldNews} />
         <Route path="/" exact component={Home} />
       </div>
       ;

@@ -4,6 +4,7 @@ import {
   selectAllTrending,
   fetchTrending,
 } from "../reducers/trendingNewsSlice";
+import { selectAllWorldNews, fetchWorldNews } from "../reducers/worldnewsSlice";
 import ArticleSec from "./articlesSec";
 
 export const TrendingPage = () => {
@@ -36,6 +37,41 @@ export const TrendingPage = () => {
   return (
     <section className="posts-list">
       <h2>Trending</h2>
+      {content}
+    </section>
+  );
+};
+
+export const WorldNewsPage = () => {
+  const dispatch = useDispatch();
+  const worldnews = useSelector(selectAllWorldNews);
+
+  const worldnewsStatus = useSelector((state) => state.worldnews.status);
+  const error = useSelector((state) => state.worldnews.error);
+
+  useEffect(() => {
+    if (worldnewsStatus === "idle") {
+      dispatch(fetchWorldNews());
+    }
+  }, [worldnewsStatus, dispatch]);
+
+  let content;
+
+  if (worldnewsStatus === "loading") {
+    content = <div className="loader">Loading...</div>;
+  } else if (worldnewsStatus === "succeeded") {
+    content = worldnews.map((worldnews) => (
+      // <worldnewsExcerpt key={worldnews.id} worldnews={worldnews} />
+      <ArticleSec key={worldnews.title} article={worldnews}></ArticleSec>
+    ));
+    // content = "worked";
+  } else if (worldnewsStatus === "failed") {
+    content = <div>{error}</div>;
+  }
+
+  return (
+    <section className="posts-list">
+      <h2>World News</h2>
       {content}
     </section>
   );

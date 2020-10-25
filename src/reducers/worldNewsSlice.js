@@ -17,7 +17,7 @@ const initialState = {
   error: null,
 };
 const worldnewsSlice = createSlice({
-  name: "worldnews",
+  name: "worldnew",
   initialState,
   reducers: {
     worldnewsAdded: {

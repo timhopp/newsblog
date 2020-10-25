@@ -1,5 +1,5 @@
 import React from "react";
-import { TrendingHome, WorldNewsHome } from "../components/TrendingHome";
+import { TrendingHome, WorldNewsHome } from "../components/SectionHome";
 import Footer from "../components/footer";
 import "../App.css";
 
