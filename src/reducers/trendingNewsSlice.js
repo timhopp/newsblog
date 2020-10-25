@@ -27,19 +27,6 @@ const trendingSlice = createSlice({
       },
       // prepare(title, description, img) {},
     },
-    currentFind: {
-      reducer(state, action) {
-        debugger;
-        let foundCurrent = [];
-        foundCurrent.push(action.payload);
-        if (foundCurrent != null) {
-          state.currentArticle = state.currentArticle.concat(foundCurrent);
-          console.log(JSON.stringify(state.currentArticle[0]));
-        } else {
-          console.log("could not find HUH");
-        }
-      },
-    },
   },
   extraReducers: {
     [fetchTrending.pending]: (state, action) => {
@@ -62,7 +49,7 @@ const trendingSlice = createSlice({
 
 export const selectAllTrending = (state) => state.trending.trending;
 
-export const selectCurrentArticle = (state) => state.trending.currentArticle[0];
+export const selectCurrentArticle = (state) => state.trending.currentarticle[0];
 
 export const { trendingAdded, currentFind } = trendingSlice.actions;
 

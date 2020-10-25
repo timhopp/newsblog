@@ -1,4 +1,4 @@
-import { selectCurrentArticle } from "../reducers/trendingNewsSlice";
+import { selectCurrentArticle } from "../reducers/currentArticleSlice";
 import { useSelector, useDispatch } from "react-redux";
 import ArticleSec from "../components/articlesSec";
 
@@ -13,7 +13,6 @@ export default function CurrentArticle() {
 
   return (
     <section className="posts-list">
-      <h2>Trending</h2>
       <ArticleSec key={current.title} article={current}></ArticleSec>
     </section>
   );

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ArticleStyles from "../styles/articles.module.css";
-import { currentFind } from "../reducers/trendingNewsSlice";
+import { currentFind } from "../reducers/currentArticleSlice";
 import { connect } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
