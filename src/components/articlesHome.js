@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import ArticleStyles from "../styles/articles.module.css";
-import currentFind from "../reducers/trendingNewsSlice";
+import { currentFind } from "../reducers/trendingNewsSlice";
 import { connect } from "react-redux";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 // connect(mapDispatchToProps)
@@ -14,16 +14,12 @@ class ArticleHome extends React.Component {
     this.state = {};
   }
 
-  // setCurrentArticle(){
-  //   this.props.store.dispatch(setCurrentArticle())
-  // }
-
   render() {
     return (
       <Link
-        // onClick={this.props.setCurrentArticle(this.props.article.title)}
+        onClick={() => this.props.currentFind(this.props.article)}
         className="link col-3 m-2 bg-light p-3 rounded"
-        href="/Sections/Articles/currentArticle"
+        to="/Sections/CurrentArticle"
       >
         <div className="">
           <img
@@ -44,9 +40,11 @@ class ArticleHome extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, aprop) => ({
-  // setCurrentArticle: () => dispatch(currentFind(aprop.title)),
-});
+const mapDispatchToProps = (dispatch, state) => {
+  return {
+    currentFind: (article) => dispatch(currentFind(article)),
+  };
+};
 
-export default connect(mapDispatchToProps)(ArticleHome);
+export default connect(undefined, mapDispatchToProps)(ArticleHome);
 // export default ArticleHome

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   selectAllTrending,
   fetchTrending,
+  trendingAdded,
 } from "../reducers/trendingNewsSlice";
 import { selectAllWorldNews, fetchWorldNews } from "../reducers/worldnewsSlice";
 import { selectAllSports, fetchSports } from "../reducers/sportsSlice";

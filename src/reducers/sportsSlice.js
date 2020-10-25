@@ -5,7 +5,7 @@ export const fetchSports = createAsyncThunk(
   "reducers/fetchTrending",
   async () => {
     const response = await axios.get(
-      "https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=22221f62f9584a0d8654a29cadc834a8"
+      "https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=a95b18d0b5d847099060c37bd0726fd3"
     );
     return response.data.articles;
   }

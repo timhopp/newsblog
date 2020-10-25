@@ -5,7 +5,7 @@ export const fetchTrending = createAsyncThunk(
   "reducers/fetchTrending",
   async () => {
     const response = await axios.get(
-      "https://newsapi.org/v2/top-headlines?country=us&apiKey=22221f62f9584a0d8654a29cadc834a8"
+      "https://newsapi.org/v2/top-headlines?country=us&apiKey=a95b18d0b5d847099060c37bd0726fd3"
     );
     return response.data.articles;
   }
@@ -13,7 +13,7 @@ export const fetchTrending = createAsyncThunk(
 
 const initialState = {
   trending: [],
-  currentArticle: {},
+  currentArticle: [],
   status: "idle",
   error: null,
 };
@@ -25,20 +25,21 @@ const trendingSlice = createSlice({
       reducer(state, action) {
         state.trending.push(action.payload);
       },
-      // prepare(title) {},
+      // prepare(title, description, img) {},
     },
-    // currentFind: {
-    //   reducer(state, action) {
-    //     let foundCurrent = state.trending.forEach(
-    //       (trending) => (trending.title = action.title)
-    //     );
-    //     if (foundCurrent != null) {
-    //       state.trending.currentArticle = foundCurrent;
-    //     } else {
-    //       return state;
-    //     }
-    //   },
-    // },
+    currentFind: {
+      reducer(state, action) {
+        debugger;
+        let foundCurrent = [];
+        foundCurrent.push(action.payload);
+        if (foundCurrent != null) {
+          state.currentArticle = state.currentArticle.concat(foundCurrent);
+          console.log(JSON.stringify(state.currentArticle[0]));
+        } else {
+          console.log("could not find HUH");
+        }
+      },
+    },
   },
   extraReducers: {
     [fetchTrending.pending]: (state, action) => {
@@ -46,8 +47,11 @@ const trendingSlice = createSlice({
     },
     [fetchTrending.fulfilled]: (state, action) => {
       state.status = "succeeded";
+      debugger;
       // Add any fetched posts to the array
       state.trending = state.trending.concat(action.payload);
+
+      console.log(state.currentArticle);
     },
     [fetchTrending.rejected]: (state, action) => {
       state.status = "failed";
@@ -58,6 +62,8 @@ const trendingSlice = createSlice({
 
 export const selectAllTrending = (state) => state.trending.trending;
 
-export const { trendingAdded } = trendingSlice.actions;
+export const selectCurrentArticle = (state) => state.trending.currentArticle[0];
+
+export const { trendingAdded, currentFind } = trendingSlice.actions;
 
 export default trendingSlice.reducer;

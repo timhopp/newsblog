@@ -17,8 +17,7 @@ const currentSlice = createSlice({
   },
 });
 
-export const selectCurrentArticle = (state) =>
-  state.currentarticle.currentarticle;
+export const selectCurrentArticle = (state) => state.trending.currentarticle;
 
 // export const { trendingAdded } = trendingSlice.actions;
 
