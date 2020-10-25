@@ -8,6 +8,8 @@ import NavB from "./components/navbar";
 import Home from "./Sections/home";
 import Trending from "./Sections/trending";
 import WorldNews from "./Sections/worldnews";
+import Sports from "./Sections/sports";
+import Footer from "./components/footer";
 
 const middlewareEnhancer = applyMiddleware(thunkMiddleware);
 const composedEnhancers = compose(middlewareEnhancer);
@@ -26,16 +28,19 @@ const AppWrapper = () => {
 
 const App = () => {
   return (
-    <Router>
-      <div className="App">
-        <NavB />
-        <Route path="/Sections/Tech" exact component={Tech} />
-        <Route path="/Sections/Trending" exact component={Trending} />
-        <Route path="/Sections/WorldNews" exact component={WorldNews} />
-        <Route path="/" exact component={Home} />
-      </div>
-      ;
-    </Router>
+    <>
+      <Router>
+        <div className="App">
+          <NavB />
+          <Route path="/Sections/Tech" exact component={Tech} />
+          <Route path="/Sections/Trending" exact component={Trending} />
+          <Route path="/Sections/WorldNews" exact component={WorldNews} />
+          <Route path="/Sections/Sports" exact component={Sports} />
+          <Route path="/" exact component={Home} />
+        </div>
+        <Footer />
+      </Router>
+    </>
   );
 };
 

@@ -5,6 +5,8 @@ import {
   fetchTrending,
 } from "../reducers/trendingNewsSlice";
 import { selectAllWorldNews, fetchWorldNews } from "../reducers/worldnewsSlice";
+import { selectAllSports, fetchSports } from "../reducers/sportsSlice";
+import { selectAllTech, fetchTech } from "../reducers/techSlice";
 import ArticleSec from "./articlesSec";
 
 export const TrendingPage = () => {
@@ -72,6 +74,76 @@ export const WorldNewsPage = () => {
   return (
     <section className="posts-list">
       <h2>World News</h2>
+      {content}
+    </section>
+  );
+};
+
+export const SportsPage = () => {
+  const dispatch = useDispatch();
+  const sports = useSelector(selectAllSports);
+
+  const sportsStatus = useSelector((state) => state.sports.status);
+  const error = useSelector((state) => state.sports.error);
+
+  useEffect(() => {
+    if (sportsStatus === "idle") {
+      dispatch(fetchSports());
+    }
+  }, [sportsStatus, dispatch]);
+
+  let content;
+
+  if (sportsStatus === "loading") {
+    content = <div className="loader">Loading...</div>;
+  } else if (sportsStatus === "succeeded") {
+    content = sports.map((sports) => (
+      // <sportsExcerpt key={sports.id} sports={sports} />
+      <ArticleSec key={sports.title} article={sports}></ArticleSec>
+    ));
+    // content = "worked";
+  } else if (sportsStatus === "failed") {
+    content = <div>{error}</div>;
+  }
+
+  return (
+    <section className="posts-list">
+      <h2>Sports</h2>
+      {content}
+    </section>
+  );
+};
+
+export const TechPage = () => {
+  const dispatch = useDispatch();
+  const tech = useSelector(selectAllTech);
+
+  const techStatus = useSelector((state) => state.tech.status);
+  const error = useSelector((state) => state.tech.error);
+
+  useEffect(() => {
+    if (techStatus === "idle") {
+      dispatch(fetchTech());
+    }
+  }, [techStatus, dispatch]);
+
+  let content;
+
+  if (techStatus === "loading") {
+    content = <div className="loader">Loading...</div>;
+  } else if (techStatus === "succeeded") {
+    content = tech.map((tech) => (
+      // <techExcerpt key={tech.id} tech={tech} />
+      <ArticleSec key={tech.title} article={tech}></ArticleSec>
+    ));
+    // content = "worked";
+  } else if (techStatus === "failed") {
+    content = <div>{error}</div>;
+  }
+
+  return (
+    <section className="posts-list">
+      <h2>Tech</h2>
       {content}
     </section>
   );

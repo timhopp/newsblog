@@ -3,6 +3,7 @@ import ArticleStyles from "../styles/articles.module.css";
 import currentFind from "../reducers/trendingNewsSlice";
 import { connect } from "react-redux";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 // connect(mapDispatchToProps)
 
@@ -19,9 +20,9 @@ class ArticleHome extends React.Component {
 
   render() {
     return (
-      <a
+      <Link
         // onClick={this.props.setCurrentArticle(this.props.article.title)}
-        className="col-3 m-2 bg-light p-3 rounded"
+        className="link col-3 m-2 bg-light p-3 rounded"
         href="/Sections/Articles/currentArticle"
       >
         <div className="">
@@ -38,7 +39,7 @@ class ArticleHome extends React.Component {
           </b>
           <p>{this.props.article.description}</p>
         </div>
-      </a>
+      </Link>
     );
   }
 }

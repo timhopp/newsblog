@@ -1,12 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class Footer extends React.Component {
   render() {
     return (
       <div className="bg-dark p-2">
         <div className="text-center">
-          {/* <Link href="https://github.com/timhopp"> */}
-          <p className="text-white">Made By Tim Hopp</p>
+          <Link className="navLink" to="https://github.com/timhopp">
+            {" "}
+            Made By Tim Hopp{" "}
+          </Link>
         </div>
       </div>
     );

@@ -14,3 +14,26 @@
 .App-link {
   color: rgb(112, 76, 182);
 }
+
+.link {
+  text-decoration: none;
+  color: Black;
+}
+
+.link:visited {
+  color: Black;
+}
+.link:hover {
+  color: Black;
+  text-decoration: none;
+}
+
+.navLink {
+  color: white;
+}
+
+.navLink:hover {
+  color: greenyellow;
+  text-decoration: none;
+  transition: 0.5s;
+}
