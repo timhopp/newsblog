@@ -1,3 +1,8 @@
+import React from "react";
 export default function Tech() {
-  return <h2>Hi</h2>;
+  return (
+    <section>
+      <h2>hi</h2>
+    </section>
+  );
 }
