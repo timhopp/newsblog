@@ -1,6 +1,6 @@
 import { selectCurrentArticle } from "../reducers/currentArticleSlice";
 import { useSelector, useDispatch } from "react-redux";
-import ArticleSec from "../components/articlesSec";
+import CurrentArticleComp from "../components/currentArticle";
 
 export default function CurrentArticle() {
   const dispatch = useDispatch();
@@ -13,7 +13,10 @@ export default function CurrentArticle() {
 
   return (
     <section className="posts-list">
-      <ArticleSec key={current.title} article={current}></ArticleSec>
+      <CurrentArticleComp
+        key={current.title}
+        article={current}
+      ></CurrentArticleComp>
     </section>
   );
 }
