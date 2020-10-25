@@ -1,5 +1,5 @@
 import trendingNewsSlice from "./trendingNewsSlice";
-import worldNewsSlice from "./worldNewsSlice";
+import worldNewsSlice from "./worldnewsSlice";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({

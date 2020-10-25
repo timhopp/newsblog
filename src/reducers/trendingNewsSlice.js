@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchTrending = createAsyncThunk(
-  "features/fetchTrending",
+  "reducers/fetchTrending",
   async () => {
     const response = await axios.get(
       "https://newsapi.org/v2/top-headlines?country=us&apiKey=22221f62f9584a0d8654a29cadc834a8"
