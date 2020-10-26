@@ -2,10 +2,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchSports = createAsyncThunk(
-  "reducers/fetchTrending",
+  "reducers/fetchSports",
   async () => {
     const response = await axios.get(
-      "https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=a95b18d0b5d847099060c37bd0726fd3"
+      "https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=22221f62f9584a0d8654a29cadc834a8"
     );
     return response.data.articles;
   }
@@ -13,7 +13,6 @@ export const fetchSports = createAsyncThunk(
 
 const initialState = {
   sports: [],
-  currentArticle: {},
   status: "idle",
   error: null,
 };
@@ -27,18 +26,6 @@ const sportsSlice = createSlice({
       },
       // prepare(title) {},
     },
-    // currentFind: {
-    //   reducer(state, action) {
-    //     let foundCurrent = state.trending.forEach(
-    //       (trending) => (trending.title = action.title)
-    //     );
-    //     if (foundCurrent != null) {
-    //       state.trending.currentArticle = foundCurrent;
-    //     } else {
-    //       return state;
-    //     }
-    //   },
-    // },
   },
   extraReducers: {
     [fetchSports.pending]: (state, action) => {
@@ -47,7 +34,8 @@ const sportsSlice = createSlice({
     [fetchSports.fulfilled]: (state, action) => {
       state.status = "succeeded";
       // Add any fetched posts to the array
-      state.sports = state.sports.concat(action.payload);
+      let filtered = action.payload.filter((art) => art.urlToImage !== null);
+      state.sports = state.sports.concat(filtered);
     },
     [fetchSports.rejected]: (state, action) => {
       state.status = "failed";

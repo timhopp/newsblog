@@ -24,7 +24,6 @@ const worldnewsSlice = createSlice({
       reducer(state, action) {
         state.worldnews.push(action.payload);
       },
-      // prepare(title) {},
     },
   },
   extraReducers: {
@@ -34,7 +33,8 @@ const worldnewsSlice = createSlice({
     [fetchWorldNews.fulfilled]: (state, action) => {
       state.status = "succeeded";
       // Add any fetched posts to the array
-      state.worldnews = state.worldnews.concat(action.payload);
+      let filtered = action.payload.filter((art) => art.urlToImage !== null);
+      state.worldnews = state.worldnews.concat(filtered);
     },
     [fetchWorldNews.rejected]: (state, action) => {
       state.status = "failed";

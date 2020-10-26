@@ -36,9 +36,8 @@ const trendingSlice = createSlice({
       state.status = "succeeded";
       debugger;
       // Add any fetched posts to the array
-      state.trending = state.trending.concat(action.payload);
-
-      console.log(state.currentArticle);
+      let filtered = action.payload.filter((art) => art.urlToImage !== null);
+      state.trending = state.trending.concat(filtered);
     },
     [fetchTrending.rejected]: (state, action) => {
       state.status = "failed";

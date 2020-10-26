@@ -3,14 +3,13 @@ import axios from "axios";
 
 export const fetchTech = createAsyncThunk("reducers/fetchTech", async () => {
   const response = await axios.get(
-    "https://newsapi.org/v2/everything?q=tech&pageSize=20&apiKey=a95b18d0b5d847099060c37bd0726fd3"
+    "https://newsapi.org/v2/everything?q=technology&apiKey=a95b18d0b5d847099060c37bd0726fd3"
   );
   return response.data.articles;
 });
 
 const initialState = {
   tech: [],
-  currentArticle: {},
   status: "idle",
   error: null,
 };
@@ -44,7 +43,8 @@ const techSlice = createSlice({
     [fetchTech.fulfilled]: (state, action) => {
       state.status = "succeeded";
       // Add any fetched posts to the array
-      state.tech = state.tech.concat(action.payload);
+      let filtered = action.payload.filter((art) => art.urlToImage !== null);
+      state.tech = state.tech.concat(filtered);
     },
     [fetchTech.rejected]: (state, action) => {
       state.status = "failed";

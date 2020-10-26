@@ -32,8 +32,25 @@
   color: white;
 }
 
+.navLink:visited {
+  color: white;
+}
+
 .navLink:hover {
   color: greenyellow;
   text-decoration: none;
   transition: 0.5s;
+}
+
+a {
+  text-decoration: none;
+  color: Black;
+}
+
+a:visited {
+  color: Black;
+}
+a:hover {
+  color: Black;
+  text-decoration: none;
 }

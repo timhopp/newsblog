@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   selectAllTrending,
   fetchTrending,
-  trendingAdded,
 } from "../reducers/trendingNewsSlice";
 import { selectAllWorldNews, fetchWorldNews } from "../reducers/worldnewsSlice";
 import { selectAllSports, fetchSports } from "../reducers/sportsSlice";
@@ -29,10 +28,8 @@ export const TrendingPage = () => {
     content = <div className="loader">Loading...</div>;
   } else if (trendingStatus === "succeeded") {
     content = trending.map((trending) => (
-      // <trendingExcerpt key={trending.id} trending={trending} />
       <ArticleSec key={trending.title} article={trending}></ArticleSec>
     ));
-    // content = "worked";
   } else if (trendingStatus === "failed") {
     content = <div>{error}</div>;
   }
@@ -64,7 +61,6 @@ export const WorldNewsPage = () => {
     content = <div className="loader">Loading...</div>;
   } else if (worldnewsStatus === "succeeded") {
     content = worldnews.map((worldnews) => (
-      // <worldnewsExcerpt key={worldnews.id} worldnews={worldnews} />
       <ArticleSec key={worldnews.title} article={worldnews}></ArticleSec>
     ));
     // content = "worked";
@@ -99,10 +95,8 @@ export const SportsPage = () => {
     content = <div className="loader">Loading...</div>;
   } else if (sportsStatus === "succeeded") {
     content = sports.map((sports) => (
-      // <sportsExcerpt key={sports.id} sports={sports} />
       <ArticleSec key={sports.title} article={sports}></ArticleSec>
     ));
-    // content = "worked";
   } else if (sportsStatus === "failed") {
     content = <div>{error}</div>;
   }
@@ -134,10 +128,8 @@ export const TechPage = () => {
     content = <div className="loader">Loading...</div>;
   } else if (techStatus === "succeeded") {
     content = tech.map((tech) => (
-      // <techExcerpt key={tech.id} tech={tech} />
       <ArticleSec key={tech.title} article={tech}></ArticleSec>
     ));
-    // content = "worked";
   } else if (techStatus === "failed") {
     content = <div>{error}</div>;
   }
