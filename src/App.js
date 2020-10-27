@@ -9,6 +9,7 @@ import Home from "./Sections/home";
 import Trending from "./Sections/trending";
 import WorldNews from "./Sections/worldnews";
 import CurrentArticle from "./Sections/currentArticle";
+import Favs from "./Sections/favs";
 import Sports from "./Sections/sports";
 import Footer from "./components/footer";
 
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/Sections/Trending" exact component={Trending} />
           <Route path="/Sections/WorldNews" exact component={WorldNews} />
           <Route path="/Sections/Sports" exact component={Sports} />
+          <Route path="/Sections/Favs" exact component={Favs} />
           <Route
             path="/Sections/CurrentArticle"
             exact

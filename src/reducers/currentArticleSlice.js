@@ -3,20 +3,20 @@ import axios from "axios";
 
 const initialState = {
   currentArticle: [],
+  favArticles: [],
 };
 const currentSlice = createSlice({
   name: "current",
   initialState,
   reducers: {
-    currentAdded: {
-      reducer(state, action) {
-        state.currentArticle.push(action.payload);
-      },
-      // prepare(title) {},
-    },
+    // currentAdded: {
+    //   reducer(state, action) {
+    //     state.currentArticle.push(action.payload);
+    //   },
+    //   // prepare(title) {},
+    // },
     currentFind: {
       reducer(state, action) {
-        debugger;
         let foundCurrent = [];
         foundCurrent.push(action.payload);
         if (foundCurrent != null) {
@@ -28,12 +28,18 @@ const currentSlice = createSlice({
         }
       },
     },
+    addToFav: {
+      reducer(state, action) {
+        state.favArticles = state.favArticles.concat(action.payload);
+      },
+    },
   },
 });
 
 export const selectCurrentArticle = (state) =>
   state.currentarticle.currentArticle[0];
 
-export const { currentFind } = currentSlice.actions;
+export const selectAllFavs = (state) => state.currentarticle.favArticles;
+export const { currentFind, addToFav } = currentSlice.actions;
 
 export default currentSlice.reducer;

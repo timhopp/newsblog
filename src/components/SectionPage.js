@@ -7,6 +7,7 @@ import {
 import { selectAllWorldNews, fetchWorldNews } from "../reducers/worldnewsSlice";
 import { selectAllSports, fetchSports } from "../reducers/sportsSlice";
 import { selectAllTech, fetchTech } from "../reducers/techSlice";
+import { selectAllFavs } from "../reducers/currentArticleSlice";
 import ArticleSec from "./articlesSec";
 
 export const TrendingPage = () => {
@@ -137,6 +138,21 @@ export const TechPage = () => {
   return (
     <section className="posts-list">
       <h2>Tech</h2>
+      {content}
+    </section>
+  );
+};
+
+export const FavPage = () => {
+  const favs = useSelector(selectAllFavs);
+
+  let content = favs.map((favs) => (
+    <ArticleSec key={favs.title} article={favs}></ArticleSec>
+  ));
+
+  return (
+    <section className="posts-list">
+      <h2>Favs</h2>
       {content}
     </section>
   );
