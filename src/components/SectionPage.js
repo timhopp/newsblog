@@ -142,18 +142,3 @@ export const TechPage = () => {
     </section>
   );
 };
-
-export const FavPage = () => {
-  const favs = useSelector(selectAllFavs);
-
-  let content = favs.map((favs) => (
-    <ArticleSec key={favs.title} article={favs}></ArticleSec>
-  ));
-
-  return (
-    <section className="posts-list">
-      <h2>Favs</h2>
-      {content}
-    </section>
-  );
-};

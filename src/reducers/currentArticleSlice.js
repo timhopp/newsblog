@@ -33,6 +33,9 @@ const currentSlice = createSlice({
         state.favArticles = state.favArticles.concat(action.payload);
       },
     },
+    getFavs: {
+      reducer(state, action) {},
+    },
   },
 });
 
@@ -40,6 +43,6 @@ export const selectCurrentArticle = (state) =>
   state.currentarticle.currentArticle[0];
 
 export const selectAllFavs = (state) => state.currentarticle.favArticles;
-export const { currentFind, addToFav } = currentSlice.actions;
+export const { currentFind, addToFav, getFavs } = currentSlice.actions;
 
 export default currentSlice.reducer;
